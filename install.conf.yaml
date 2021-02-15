@@ -1,0 +1,19 @@
+- defaults:
+    link:
+        relink: true
+        create: true
+
+- clean: ['~']
+
+- link:
+    ~/.vimrc:
+        force: true
+        path: vimrc/vimrc
+    ~/.vim: vimrc
+    ~/.config/nvim/init.vim: vimrc/vimrc
+    ~/.config/nvim/autoload: vimrc/autoload
+    ~/.tmux.conf: tmux.conf
+    ~/.tmux: tmux
+
+- shell:
+    - [curl --insecure -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim, Installing vim-plug]
