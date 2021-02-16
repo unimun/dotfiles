@@ -6,6 +6,9 @@
 - clean: ['~']
 
 - link:
+    ~/.zshenv:
+        force: true
+        path: zshenv
     ~/.vimrc:
         force: true
         path: vimrc/vimrc
