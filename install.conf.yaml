@@ -16,6 +16,7 @@
     ~/.vim: vimrc
     ~/.config/nvim/init.vim: vimrc/vimrc
     ~/.config/nvim/autoload: vimrc/autoload
+    ~/.config/nvim/coc-settings.json: vimrc/config/coc-settings.json
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
 
