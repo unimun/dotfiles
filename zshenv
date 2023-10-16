@@ -47,4 +47,3 @@ CUSTOM_ENV=~/.config/zsh/my_zshenv
 if [[ -f "$CUSTOM_ENV" ]]; then
     source ~/.config/zsh/my_zshenv
 fi
-

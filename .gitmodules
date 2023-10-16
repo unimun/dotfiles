@@ -8,3 +8,4 @@
 [submodule "vimrc"]
 	path = vimrc
 	url = https://github.com/unimun/vimrc
+	branch = main
