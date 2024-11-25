@@ -1,24 +1,27 @@
 - defaults:
     link:
-        relink: true
-        create: true
+      relink: true
+      create: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
-    ~/.dotfiles: ''
+    ~/.dotfiles: ""
+    ~/bin/yank: yank
     ~/.zshenv:
-        force: true
-        path: zshenv
-    ~/.vimrc:
-        force: true
-        path: vimrc/vimrc
-    ~/.vim: vimrc
-    ~/.config/nvim/init.vim: vimrc/vimrc
-    ~/.config/nvim/autoload: vimrc/autoload
-    ~/.config/nvim/coc-settings.json: vimrc/config/coc-settings.json
+      force: true
+      path: zshenv
+    ~/.config/alacritty:
+      force: true
+      path: alacritty
+    ~/.config/nvim:
+      force: true
+      path: nvim
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
 
 - shell:
-    - [curl --insecure -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim, Installing vim-plug]
+    - [
+        curl --insecure -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim,
+        Installing vim-plug,
+      ]
