@@ -19,14 +19,31 @@ map("t", "kj", "<C-\\><C-n>", { desc = "Escape to normal mode" })
 map("i", "kj", "<C-\\><C-n>", { desc = "Escape to normal mode" })
 
 -- Function to copy text using the yank script
+-- idea from clipetty and https://sunaku.github.io/tmux-yank-osc52.html
+local function get_tty()
+  if os.getenv("TMUX") then
+    local handle = io.popen("tmux show-environment SSH_TTY")
+    if not handle then
+      return nil
+    end
+    local result = handle:read("*a")
+    handle:close()
+    return result:match("SSH_TTY=(%S+)")
+  else
+    return os.getenv("SSH_TTY")
+  end
+end
+
 local function yank(text)
   vim.system({ "yank" }, { stdin = text }, function(result)
     if not result.code then
       io.stderr:write("Yank Error: " .. result.stdout)
     else
-      local tty_path = os.getenv("SSH_TTY")
+      local tty_path = get_tty()
       if not tty_path then
-        io.stderr:write("SSH_TTY not set")
+        vim.schedule(function()
+          vim.fn.setreg("*", text)
+        end)
         return
       end
       local tty = io.open(tty_path, "wb")
